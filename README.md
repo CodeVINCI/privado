@@ -4,9 +4,14 @@
 
 The project is made upon Docker with Django, Python and mongodb.
 
+## Prerequisite
+
+Docker installed
+Python3.6
+
 ## How to run the project
 
-1. Goto base directory privadoproj, Build the docker image.
+1. Clone the project and Goto base directory privadoproj, Build the docker image.
 
 ```
 * docker-compose build
