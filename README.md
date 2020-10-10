@@ -1,32 +1,35 @@
-# good-food-project
+# Privado Backend Engineer Task
 
-## *Improve Quality of Mess Food in India*
+## Description
 
-## The Goal
+The project is made upon Docker with Django, Python and mongodb.
 
-1. Requesting Government to create a regulatory body that solely works for maintenance of food quality in learning institutes of India.
+## How to run the project
 
-2. The Quality of food must be assured irrespective of whether the intitution is IIT,NIT,Govt. Funded university, Private college.
+1. Goto base directory privadoproj, Build the docker image.
 
-3. The Regulatory body must do licensing and delicensing of the company having tenders to cook food in the country.
+```
+* docker-compose build
+```
 
-4. Regular assessments of foods by authorities to ensure the quality is maintained.
+2. Start the servers.
 
-## Implementation
+```
+* docker-compose up
+```
 
- * Build a form where user can submit their complaints
- * Display those complaints on a page where user can approve or disapprove it with their signature.
+3. Insert Initial templates to DB.
 
-## Join us on:
+```
+docker-compose run web /usr/local/bin/python manage.py initdb
+```
 
-* [Gitter](https://gitter.im/good-food-project)
+4. Run the tests.
 
-## Deployment
+```
+docker-compose run web /usr/local/bin/python manage.py test te
+```
 
-* Yet to add
+5. The project is up and running.
 
-## Built With
 
-* Yet to Add
-
-## Contributing
