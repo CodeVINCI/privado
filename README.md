@@ -30,6 +30,17 @@ docker-compose run web /usr/local/bin/python manage.py initdb
 docker-compose run web /usr/local/bin/python manage.py test te
 ```
 
-5. The project is up and running.
+5. The project is up and running. Curls to try are given below.
 
+```
+curl --location --request GET 'http://localhost:8000/te/customer/999/templates'
+
+curl --location --request GET 'http://localhost:8000/te/customer/111/templates'
+
+curl --location --request GET 'http://localhost:8000/te/customer/222/templates'
+
+curl --location --request POST 'http://localhost:8000/te/customer/333/templates'
+
+curl --location --request GET 'http://localhost:8000/te/customer/222/templates'
+```
 
