@@ -6,8 +6,8 @@ The project is made upon Docker with Django, Python and mongodb.
 
 ## Prerequisite
 
-Docker installed
-Python3.6
+1. Docker installed
+2. Python3.6
 
 ## How to run the project
 
