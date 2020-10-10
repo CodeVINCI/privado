@@ -1,0 +1,16 @@
+from django.core.management.base import BaseCommand, CommandError
+#from django.contrib.auth import get_user_model
+from pymongo import MongoClient
+
+#User = get_user_model()
+client = MongoClient("mongodb://mongodb:27017")
+
+class Command(BaseCommand):
+
+    def handle(self, *args, **options):
+        db = client['te']
+        templates = db['templates']
+        templates.insert({"name":"template1","template":{"type": "system","entity": "entity","customerId": "system","law" : "base","fields" : [ { "field" : "name", "label" : "Name", "data_type" :"short-text", "default" : "Type name here..", "field_type":	"basic_details", "field_type_label":	"Basic Details", "is_removable" : False, "mandatory": True}, { "field" : "description", "label" : "Description", "data_type" :"long-text", "default" : "Type description here..", "field_type":	"basic_details", "field_type_label":	"Basic Details", "is_removable" : False, "mandatory": False},{ "field" : "entity_type", "label" : "Entity Type", "data_type" :"options", "default" : "", "field_type":	"basic_details", "field_type_label":	"Basic Details","is_removable" :False, "mandatory": False,"options_list":["Affiliate", "Client", "Holding Company", "Regulatory Body", "Subsidiary"]},{ "field" : "location", "label" : "Location", "data_type" :"options", "default" : "", "field_type":	"basic_details", "field_type_label":	"Basic Details", "is_removable" : False,"mandatory": False,"options_url": {"url" : "dm/geos","request_type" : "GET"}}]}})
+        templates.insert({"name":"template2","template":{"type": "system","entity": "entity","customerId": "system","law" : "GDPR","fields" : [ { "field" : "address", "label" : "Address", "data_type" :"long-text", "default" : "Type address here..", "field_type":	"contact_details", "field_type_label":	"Contact Details", "is_removable" : False, "mandatory": False},{ "field" : "representative", "label" : "Representative", "data_type" :"options", "default" : "Type the representative name here..", "field_type":	"contact_details", "field_type_label":	"Contact Details", "is_removable" : False, "mandatory": False,"options_url": {"url" : "dm/customer/<customer_id>/users","request_type" : "GET"}}]}})
+        templates.insert({"name":"template3","template":{"type": "system","entity": "entity","customerId": "system","law" : "CCPA","fields" : [ { "field" : "representative_contact_details", "label" : "Representative Contact Details", "data_type" :"long-text", "default" : "Type contact details here..","field_type":	"contact_details", "field_type_label":	"Contact Details", "is_removable" : False, "mandatory": False},{ "field" : "data_protection_officer", "label" : "Data Protection Officer", "data_type" :"options", "default" : "Type the data protection officer name here..","field_type":	"contact_details", "field_type_label":	"Contact Details", "is_removable" : False, "mandatory": False,"options_url": {"url" : "dm/customer/<customer_id>/users","request_type" : "GET"}}, { "field" : "dpo_contact_details", "label" : "Data Protection Officer Contact Details", "data_type" :"long-text", "default" : "Type contact details here..","field_type":	"contact_details", "field_type_label":	"Contact Details", "is_removable" : False, "mandatory": False}]}})
+        print("Db has been populated with system templates")
